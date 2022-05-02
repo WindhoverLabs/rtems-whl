@@ -12,6 +12,7 @@ ldflags: []
 links: []
 source:
 - testsuites/samples/hello/init.c
+- testsuites/samples/hello/apphello.c
 stlib: []
 target: testsuites/samples/hello.exe
 type: build

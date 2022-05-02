@@ -16,7 +16,7 @@ content: |
   prefix = ${PREFIX}
   exec_prefix = $${prefix}/${ARCH}-rtems${__RTEMS_MAJOR__}
 
-  CC_FOR_TARGET = ${ARCH}-rtems${__RTEMS_MAJOR__}-gcc
+  CC_FOR_TARGET = ${ARCH}-rtems${__RTEMS_MAJOR__}-gcc --pipe
   CXX_FOR_TARGET = ${ARCH}-rtems${__RTEMS_MAJOR__}-g++
   AS_FOR_TARGET = ${ARCH}-rtems${__RTEMS_MAJOR__}-as
   AR_FOR_TARGET = ${ARCH}-rtems${__RTEMS_MAJOR__}-ar

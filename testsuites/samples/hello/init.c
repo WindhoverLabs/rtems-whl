@@ -33,12 +33,65 @@
 #include <rtems.h>
 #include <tmacros.h>
 
+#include <dlfcn.h>
+#include <pthread.h>
+#include <errno.h>
+
+void apphello(void);
+
 const char rtems_test_name[] = "HELLO WORLD";
 
 static rtems_task Init(
   rtems_task_argument ignored
 )
 {
+   int status;
+   pthread_once_t once = PTHREAD_ONCE_INIT;
+
+/* Loading apphello dynamically and executing  */
+/*
+  void *handle;
+  void (*func_apphello)(void);
+
+//  handle = dlopen("./libapphello.a", RTLD_LAZY);
+//  handle = dlopen("./libapphello.a", RTLD_NOW);
+  handle = dlopen("./libapphello.a", RTLD_GLOBAL);
+
+  if (!handle) {
+    // fail to load the library
+    printf("Error: %s\n", dlerror());
+    rtems_test_exit( 1 );
+  }
+
+  *(void**)(&func_apphello) = dlsym(handle, "apphello");
+  if (!func_apphello) {
+    // no such symbol
+    printf("Error: %s\n", dlerror());
+    dlclose(handle);
+    rtems_test_exit( 1 );
+  }
+
+  func_apphello();
+  dlclose(handle);
+*/
+/* End of Loading apphello dynamically and executing  */
+
+/* Loading apphello statically and executing  */
+//   puts("Init: pthread_once create");
+   status = pthread_once(&once, apphello);
+
+   switch(status) {
+      case 0 :
+         printf("Init: pthread_once success\n");
+         break;
+      case EINVAL :
+         printf("Init: Invalid setting in attr\n");
+         break;
+      default :
+         printf("Init: Unknown error\n");
+   }
+/* End of loading apphello statically and executing */
+
   rtems_print_printer_fprintf_putc(&rtems_test_printer);
   TEST_BEGIN();
   printf( "Hello World\n" );
