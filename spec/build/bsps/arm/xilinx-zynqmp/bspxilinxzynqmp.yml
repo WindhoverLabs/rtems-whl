@@ -17,6 +17,8 @@ install:
 - destination: ${BSP_INCLUDEDIR}/bsp
   source:
   - bsps/arm/xilinx-zynqmp/include/bsp/irq.h
+  - bsps/arm/xilinx-zynqmp/include/bsp/u-boot-config.h
+  - bsps/arm/include/bsp/u-boot-board-info.h
 - destination: ${BSP_INCLUDEDIR}/dev/clock
   source:
   - bsps/include/dev/clock/arm-generic-timer.h
@@ -64,6 +66,8 @@ links:
 - role: build-dependency
   uid: optresetvec
 - role: build-dependency
+  uid: optuboot
+- role: build-dependency
   uid: ../../obj
 - role: build-dependency
   uid: ../../objirq
@@ -76,7 +80,7 @@ links:
 - role: build-dependency
   uid: ../../objmem
 - role: build-dependency
-  uid: ../../opto2
+  uid: ../../opto0
 - role: build-dependency
   uid: linkcmds
 - role: build-dependency
@@ -104,4 +108,5 @@ source:
 - bsps/shared/start/gettargethash-default.c
 - bsps/shared/start/sbrk.c
 - bsps/shared/start/stackalloc.c
+- bsps/shared/start/bsp-uboot-board-info.c
 type: build

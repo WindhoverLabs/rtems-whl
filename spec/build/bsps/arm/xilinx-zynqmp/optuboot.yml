@@ -1,21 +1,24 @@
 SPDX-License-Identifier: CC-BY-SA-4.0 OR BSD-2-Clause
 actions:
-- get-integer: null
-- assert-uint32: null
-- env-assign: null
-- format-and-define: null
+- get-boolean: null
+- define-condition: null
 build-type: option
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
-default: 268435456
+default: true
 default-by-variant:
-- value: 1073741823
+- value: true
   variants:
-  - arm/xilinx_zynqmp_ultra96
+  - powerpc/mpc8309som
+- value: true
+  variants:
+  - powerpc/mpc8313erdb
+- value: true
+  variants:
+  - powerpc/mpc8349eamds
 description: |
-  override a BSP's default RAM length
+  if defined, enables U-Boot support
 enabled-by: true
-format: '{:#010x}'
 links: []
-name: ZYNQMP_RAM_LENGTH
+name: HAS_UBOOT
 type: build

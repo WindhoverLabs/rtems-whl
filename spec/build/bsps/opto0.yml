@@ -11,8 +11,6 @@ copyrights:
 default:
 - -O0
 - -g
-- -fdata-sections
-- -ffunction-sections
 default-by-variant: []
 description: |
   Optimization flags passed to the C and C++ compiler

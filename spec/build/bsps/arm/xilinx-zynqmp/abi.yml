@@ -7,11 +7,11 @@ build-type: option
 copyrights:
 - Copyright (C) 2020 embedded brains GmbH (http://www.embedded-brains.de)
 default:
-- -march=armv7-a
+- -march=armv7-r
 - -mthumb
 - -mfpu=neon
 - -mfloat-abi=hard
-- -mtune=cortex-a53
+- -mtune=cortex-r5
 default-by-variant: []
 description: |
   ABI flags
